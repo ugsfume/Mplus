@@ -1,0 +1,13 @@
+jQuery(function($){
+
+  $('form').submit(function(e){
+    e.preventDefault();
+    $('body').addClass('next');
+  });
+
+  $('.suggestion button').click(function(){
+    var v = $(this).text();
+    $('#answer').val(v).focus();
+  });
+
+});

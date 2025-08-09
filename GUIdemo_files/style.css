@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,700;1,300&display=swap');
+
+html, body {
+  height: 100%;
+}
+
+body {
+	position: relative;
+  color: #333;
+  background-color: #FFF;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 62.5%;
+  line-height: 1.2;
+  width: 100%;
+  overflow: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: 'liga', 'kern';
+  /* background: #333 url('../images/bg.jpg') no-repeat left top;
+  background-size: cover;
+  background-attachment: fixed; */
+	/*background: linear-gradient(-45deg, #e73c7e, #23d5ab, #ee7752);
+	background-size: 400% 300%;
+	animation: gradient 100s ease infinite;
+	height: 100vh; */
+}
+/*
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+*/
+
+strong {
+	font-weight: 700;
+}
+canvas {
+	position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* -ms-transform: scale(2);
+  transform: scale(2); */
+}
+.mask {
+	position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.container {
+	position: relative;
+	height: 100%;
+	overflow: auto;
+	z-index: 1;
+}
+
+.message-box-container {
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	padding: 0 20px;
+	justify-content: center;
+	align-items: center;
+	z-index: 10;
+}
+
+.message-box h1 {
+	text-align: left;
+}
+h1 {
+	color: white;
+	font-size: 5em;
+}
+h2 {
+	color: white;
+	font-size: 5em;
+}
+h3 {
+	color: white;
+	font-size: 3em;
+	margin: 1em 0 1.5em 0;
+}
+
+.input-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 0;
+	margin-top: 45px;
+	border-bottom: 1px solid white;	
+}
+
+input#answer {
+	background: transparent;
+	padding-right: 20px;
+	border: 0;
+	color: white;
+	font-size: 6em;
+	cursor: pointer;
+}
+input#answer::placeholder {
+	color: white;
+	opacity: 0.5;
+}
+
+.submit-button {
+	position: relative;
+	width: 40px;
+	height: 40px;
+}
+#submit {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	color: transparent;
+	background: transparent;
+	font: 0/0 a;
+	cursor: pointer;
+}
+.submit-icon {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	border: 1px solid white;
+	border-radius: 100%;
+	opacity: 0;
+	/* transition: opacity 0.2s ease-in-out; */
+	pointer-events: none;
+}
+#answer:focus + .submit-button .submit-icon,
+#submit:focus + .submit-icon {
+	opacity: 1;
+}
+.submit-icon span {
+	color: white;
+	font-size: 2.4em;
+	content: '\279C';
+}
+
+.suggestion {
+	margin-top: 10px;
+	color: white;
+	font-size: 2em;
+	font-style: italic;
+}
+.suggestion button {
+	position: relative;
+	border: 0;
+	background: transparent;
+	padding: 0 0 5px 0;
+	margin: 0;
+	color: white;
+	font-size: inherit;
+  font-family: 'Lato', sans-serif;
+  font-style: italic;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: 'liga', 'kern';
+	cursor: pointer;
+	overflow: hidden;
+}
+.suggestion button:before {
+	content: '';
+	position: absolute;
+	display: block;
+	left: 0;
+	bottom: 0px;
+	width: 100%;
+	height: 1px;
+	background: white;
+	-ms-transform: translateX(-100%);
+	transform: translateX(-100%);
+	transition: transform 0.3s ease-in-out;
+}
+.suggestion button:hover:before {
+	transform: none;
+}
+
+.response {
+	opacity: 0;
+	pointer-events: none;
+}
+
+/* SCENE 2 */
+
+/*
+body.next .container {
+	height: auto;
+	transition: height 3s 8s ease-in-out;
+}
+*/
+
+body.next .message-box-container {
+	/* transform: translateY(-45%); */
+	height: 50px;
+	font-size: 0.5em;
+	transition: all 0.8s 0.5s ease-in-out;
+}
+body.next .message-box-container h1,
+body.next .message-box-container .suggestion {
+	opacity: 0;
+	transition: opacity 0.5s ease-in;
+}
+body.next .response {
+	position: relative;
+	z-index: 10;
+	width: 80%;
+	height: auto;
+	margin-top: 10%;
+	max-width: 1000px;
+	margin: 100px auto 0 auto;
+	text-align: center;
+	opacity: 1;
+	pointer-events: auto;
+	transition: opacity 1s 2s ease-in-out;
+}
+
+.art-pieces {
+	margin: 60px auto 80px auto;
+	justify-content: space-between;
+	overflow: hidden;
+}
+.art-piece {
+	float: left;
+	display: table;
+	table-layout: fixed;
+	width: 43%;
+	margin-right: 7%;
+	margin-bottom: 7%;
+}
+.art-piece:nth-child(2n+2) {
+	margin-right: 0;
+}
+.art-piece:nth-child(2n+1) {
+	clear: both;
+}
+.ap-number {
+	display: table-cell;
+	width: 60px;
+	padding-right: 30px;
+	text-align: right;
+	vertical-align: top;
+}
+.ap-number span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	color: white;
+	background: purple;
+	font-size: 1.6em;
+	font-weight: 700;
+	border-radius: 100%;
+}/*
+.art-piece:nth-child(8n+1) .ap-number span {
+	background: purple;
+}
+.art-piece:nth-child(8n+2) .ap-number span {
+	background: green;
+}
+.art-piece:nth-child(8n+3) .ap-number span {
+	background: blue;
+}
+.art-piece:nth-child(8n+4) .ap-number span {
+	background: orange;
+}
+*/
+.ap-content {
+	display: table-cell;
+	vertical-align: top;
+}
+.ap-content-inner {
+	overflow: hidden;
+}
+.ap-image {
+	float: left;
+	width: 50%;
+}
+.ap-image img {
+	max-width: 100%;
+	height: auto;
+}
+.ap-text {
+	float: left;
+	width: 50%;
+	color: white;
+	padding-left: 30px;
+}
+.ap-text p {
+	font-size: 1.8em;
+	text-align: left;
+}
+.ap-text span {
+	display: block;
+	margin-bottom: 0.6em;
+}
+.floor-plan {
+	position: relative;
+	width: 80%;
+	margin: 0 auto;
+	padding-bottom: 80px;
+}
+
+.spot {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	color: white;
+	background: purple;
+	font-size: 1.6em;
+	font-weight: 700;
+	border-radius: 100%;
+}
+.spot-1 {
+	left: 5%;
+	top: 4.5%;
+}
+.spot-2 {
+	left: 68.5%;
+	bottom: 15%;
+}
+.spot-3 {
+	right: 70%;
+	top: 21%;
+}
+.spot-4 {
+	right: 39%;
+	top: 42%;
+}
+
+.wordcloud {
+	margin: 60px 0 160px 0;
+}

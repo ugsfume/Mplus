@@ -1,0 +1,9 @@
+1) Artist’s Intent: AI Recognizes Emotions in Visual Art
+https://hai.stanford.edu/news/artists-intent-ai-recognizes-emotions-visual-art
+Context: Associating abstract concepts/emotions with visual art through machine learning. Of which, the method can be used to categorise the art piece by the emotions they convey.
+2) ArtEmis: Affective Language for Visual Art
+https://github.com/optas/artemis
+Context: One of the datasets and AI models that interprets emotions in VA, with a variety of 8 distinct emotions (awe, amusement, contentment, excitment, disgust, fear, sadness, something else)
+3) Emotions dataset for NLP
+https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp?resource=download
+Context: detects emotion in natural language
